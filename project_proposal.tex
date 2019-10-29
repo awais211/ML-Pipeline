@@ -1,0 +1,80 @@
+\documentclass[twoside,11pt]{article}
+
+% Any additional packages needed should be included after jmlr2e.
+% Note that jmlr2e.sty includes epsfig, amssymb, natbib and graphicx,
+% and defines many common macros, such as 'proof' and 'example'.
+%
+% It also sets the bibliographystyle to plainnat; for more information on
+% natbib citation styles, see the natbib documentation, a copy of which
+% is archived at http://www.jmlr.org/format/natbib.pdf
+
+\usepackage{jmlr2e}
+%\usepackage{parskip}
+
+% Definitions of handy macros can go here
+\newcommand{\dataset}{{\cal D}}
+\newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+
+% Short headings should be running head and authors last names
+\ShortHeadings{95-845: AAMLP Proposal}{Awais and Gonzalez M.}
+\firstpageno{1}
+
+\begin{document}
+
+\title{Heinz 95-845: Project Proposal (Yelp)}
+
+\author{\name Alvaro Gonzalez \email alvarogo@andrew.cmu.edu \\
+       \addr Heinz College of Information Systems and Public Policy\\
+       Carnegie Mellon University\\
+       Pittsburgh, PA, United States \\
+       \AND
+       \name Muhammad Awais \email mawais@andrew.cmu.edu \\
+       \addr Heinz College of Information Systems and Public Policy\\
+       Carnegie Mellon University\\
+       Pittsburgh, PA, United States}
+\maketitle
+
+
+
+\section{Proposal Details (10 points)} \label{details}
+Please provide information for the following fields. Your proposal write-up should be no more than 2 pages.
+
+\subsection{What is your proposed analysis? What are the likely outcomes?}
+Our proposed analysis involves working with Yelp data around restaurants in Pittsburgh. This involves analysing key attributes of restaurants and then based on those attributes predict the rating of a restaurants. The likely outcome would be to identify set of features that customers value the most (e.g. wifi, parking, location etc.) and hence contribute positively towards restaurant's rating. Something that we are also considering doing as part of additional analysis is to perform Topic Modeling and/or Word2Vec on the reviews and come up with key themes around restaurant's reviews. The output from these unsupervised learning could then be fed into our initial rating prediction model to may be improve the accuracy of the model.  
+
+\subsection{Why is your proposed analysis important?}
+This analysis is of particular importance to three group of businesses or individuals: 1) Business that has low rating can use our analysis to figure out that given my current state of restaurant facilities what features are valued highly by the diners. This can then guide their investment/priority/marketing decision. 2) Entrepreneurs can use our analysis to weigh on each feature or decide the location where to open a restaurant and what to offer in a restaurant to be successful. 3) Good performing restaurants can also lend from our analysis to see what to avoid and what diner's tastes/preference are, in order to maintain good rating.  
+
+\subsection{How will your analysis contribute to existing work? Provide references, \emph{e.g.}, see: \cite{cite1}.}
+The existing research talks about factors that customers value the most for restaurant ratings. Most of these studies are done on big cities like New York, Toronto etc. Firstly, our research will focus on mid-tier city (in particular Pittsburgh) and explore what are the customer expectations here. Our findings doesn't necessarily would translate and be valid for other mid-tier cities. Secondly, we will be contributing by analyzing text reviews and what topics/themes contribute to improved rating. This will particularly focus on handling text reviews using unigram, bigram and/or trigrams approach.   
+
+Reference: 1) Nabiha Asghar, 2016, "Yelp Dataset Challenge: Review Rating Prediction". 2) Yiwen Guo, Anran Lu, Zeyu Wang, "Predicting Restaurant's Rating And Popularity Based on Yelp Dataset" 3) Linshi, Jack. "Personalizing Yelp Star Ratings: A Semantic Topic Modeling Approach. Yale University. 2014". 4) Huang, J., Rogers, S., & Joo, E. (2014). Improving restaurants by extracting subtopics from yelp reviews. iConference 2014 (Social Media Expo)
+
+\subsection{Describe the data. Where applicable, please also define Y outcome(s), U treatment, V covariates, and W population.}
+Our data involves Yelp restaurants in Pittsburgh. The Outcome is the rating value (0 to 5) as discrete variable. The Covariates are cuisine type, price, garage, lot, valet, street, working hours,days opened, wifi, location, and key themes from reviews. The population is all the restaurants in Pittsburgh that are registered on Yelp.    
+
+\subsection{What evaluation measures are appropriate for the analysis? Which measures will you use?}
+We will use Accuracy, Recall, Precision, ROC, AUC, and F1 score.  
+
+\subsection{What study design, pre-processing, and machine learning methods do you intend to use? Justify that the analysis is of appropriate size for a course project.}
+Its an Observational study design involving cross-sectional analysis. The pre-processing involves fetching data from Yelp site using combination of API access and web-scraping.
+
+Secondly, for our additional analysis with the text reviews, we will be processing the data by removing stop-words (depending if its a unigram/bigram/trigram approach), punctuation and special characters. After this we need to lemmatize and tokenize the reviews for feature extraction.
+
+In terms of Machine Learning model, we intend to use Lasso, Random Forest, and SVM. May be Neural Network and LDA as well depending on the results of our model evaluation. 
+
+
+\subsection{What are possible limitations of the study?}
+1) Its a cross-sectional analysis portraying trends at one point in time, but customer's preferences change over time.
+2) We might be missing other non-observable factors affecting ratings e.g. customers not posting reviews on Yelp.
+
+\subsection{Who will use your analytic pipeline? In one or two sentences, describe an example of its use.}
+An entrepreneur having diverse holdings may want to invest in restaurants business but did not have enough experience/expertise to decide key attributes for success such as location, cuisines type, price point etc. 
+
+\bibliography{sample.bib}
+%\appendix
+%\section*{Appendix A.}
+%Some more details about those methods, so we can actually reproduce them.
+
+\end{document}
